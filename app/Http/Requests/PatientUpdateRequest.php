@@ -13,7 +13,7 @@ class PatientUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class PatientUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'telephone' => 'required|numeric',
+            'address' => 'required',
+            'bloodType' => 'required'
         ];
     }
 }

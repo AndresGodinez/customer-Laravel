@@ -26,7 +26,9 @@
 							<td>{{ $patient->telephone }}</td>
 							<td><img src="{{ $patient->photo }}" class="img img-thumbnail"></td>
 							<td><a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info">Detalles</a></td>
-							<td><button class="btn btn-info">Actualizar</button></td>
+							<td>
+								<a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-warning">Actualizar</a>
+							</td>
 							<td>
 								{!! Form::open(['route'=> ['patients.destroy', $patient->id], 'method'=>'DELETE']) !!}
 								<input type="submit" value="Eliminar", class="btn btn-danger">

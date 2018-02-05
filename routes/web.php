@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('patients', 	 'PatientController');
+Route::resource('treatments', 	 'TreatmentController');
+Route::resource('expedients',	 'ExpedientController');
+Route::resource('estimations', 	 'EstimationController');
+Route::resource('prescriptions', 'PrescriptionController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

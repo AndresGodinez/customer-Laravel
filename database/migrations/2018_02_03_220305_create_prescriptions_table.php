@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstimationsTable extends Migration
+class CreatePrescriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateEstimationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('estimations', function (Blueprint $table) {
+        Schema::create('prescriptions', function (Blueprint $table) {
             $table->increments('id');
-
             $table->integer('patient_id')->unsigned();
-            $table->float('subtotal',10,2);
-            $table->float('balance',10,2);
-            $table->float('total',10,2);
-
+            $table->text('body');
             $table->timestamps();
 
-            // References
+            // Refrences
             $table->foreign('patient_id')->references('id')->on('patients')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
@@ -37,6 +33,6 @@ class CreateEstimationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estimations');
+        Schema::dropIfExists('prescriptions');
     }
 }

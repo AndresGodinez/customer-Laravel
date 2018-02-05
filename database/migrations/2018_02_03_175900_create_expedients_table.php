@@ -15,8 +15,8 @@ class CreateExpedientsTable extends Migration
     {
         Schema::create('expedients', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('patient_id')->unsigned();
-            $table->file('photo');
+            $table->integer('patient_id')->unsigned();
+            $table->string('photo');
             $table->timestamps();
 
             // references

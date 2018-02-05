@@ -15,12 +15,19 @@ class EstimationTreatmentTable extends Migration
     {
         Schema::create('estimations_treatments', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('estimation_id')->unsigned();
-            $table->int('treatment_id')->unsigned();
-            $table->int('quantity')->unsigned();
+            $table->integer('estimation_id')->unsigned();
+            $table->integer('treatment_id')->unsigned();
+            $table->integer('quantity')->unsigned();
             $table->timestamps();
 
+            // References
 
+            $table->foreign('estimation_id')->references('id')->on('estimations')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
+            $table->foreign('treatment_id')->references('id')->on('treatments')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
 
         });
     }

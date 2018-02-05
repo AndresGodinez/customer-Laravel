@@ -4,18 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Estimation extends Model
+class Prescription extends Model
 {
-    protected $fillable = [
+    protected $fillable =[
     	'patient_id',
-    	'subtotal',
-    	'balance',
-    	'total'
-    ];
+    	'body',
+    ]; 
 
     public function patient()
     {
     	return $this->belongsTo('App\Patient');
-    	
     }
 }

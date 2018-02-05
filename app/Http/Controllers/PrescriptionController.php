@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Patient;
+use App\Prescription;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\PatientStoreRequest;
-use App\Http\Requests\PatientUpdateRequest;
-class PatientController extends Controller
+class PrescriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = Patient::orderBy('id', 'DESC')->paginate();
-        return view('patients.index', compact('patients'));
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('patients.create');
+        //
     }
 
     /**
@@ -36,30 +33,29 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PatientStoreRequest $request)
+    public function store(Request $request)
     {
-        Patient::create($request->all());
-        return redirect()->route('patients.index')->with('info', 'Paciente Agregado');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Prescription  $prescription
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Prescription $prescription)
     {
-        return view('patients.show', compact('patient'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Prescription  $prescription
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Prescription $prescription)
     {
         //
     }
@@ -68,10 +64,10 @@ class PatientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Patient  $patient
+     * @param  \App\Prescription  $prescription
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Prescription $prescription)
     {
         //
     }
@@ -79,12 +75,11 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Prescription  $prescription
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Prescription $prescription)
     {
-        $patient->delete();
-        return back()->with('info', 'Paciente eliminado Correctamente');
+        //
     }
 }

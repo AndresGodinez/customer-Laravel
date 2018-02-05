@@ -12,9 +12,9 @@ class ExpedientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($patient_id)
     {
-        //
+        $expediet = Expedient::find()->where('patient_id', $patient_id);
     }
 
     /**
@@ -44,9 +44,10 @@ class ExpedientController extends Controller
      * @param  \App\Expedient  $expedient
      * @return \Illuminate\Http\Response
      */
-    public function show(Expedient $expedient)
+    public function show(Expedient $expedient, $patient_id)
     {
-        //
+        $expediet = Expedient::find()->where('patient_id', $patient_id);
+        return view('expedients.show', compact('expedient'));
     }
 
     /**

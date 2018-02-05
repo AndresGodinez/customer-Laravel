@@ -22,7 +22,7 @@ class Patient extends Model
 
 	public function expedient()
 	{
-		return $this->hasOne('App\Expedient');
+		return $this->hasMany('App\Expedient');
 	}
 
 	public function prescriptions($value='')

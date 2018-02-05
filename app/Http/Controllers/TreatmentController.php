@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Treatment;
 use Illuminate\Http\Request;
+use App\Http\Requests\TreatmentStoreRequest;
+use App\Http\Requests\TreatmentUpdateRequest;
 
 class TreatmentController extends Controller
 {
@@ -14,7 +16,8 @@ class TreatmentController extends Controller
      */
     public function index()
     {
-        //
+        $treatments = Treatment::orderBy('id', 'DESC')->paginate(15);
+        return view('treatments.index', compact('treatments'));
     }
 
     /**
@@ -24,7 +27,7 @@ class TreatmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('treatments.create');
     }
 
     /**
@@ -33,9 +36,11 @@ class TreatmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TreatmentStoreRequest $request)
     {
-        //
+        Treatment::create($request->all());
+        return redirect()->route('treatments.index')
+            ->with('info', 'Tratamiento Agregado');
     }
 
     /**
@@ -46,7 +51,7 @@ class TreatmentController extends Controller
      */
     public function show(Treatment $treatment)
     {
-        //
+        return view('treatments.show', compact('treatment'));
     }
 
     /**
@@ -57,7 +62,7 @@ class TreatmentController extends Controller
      */
     public function edit(Treatment $treatment)
     {
-        //
+        return view('treatments.edit', compact('treatment'));
     }
 
     /**
@@ -67,9 +72,11 @@ class TreatmentController extends Controller
      * @param  \App\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Treatment $treatment)
+    public function update(TreatmentUpdateRequest $request, Treatment $treatment)
     {
-        //
+        $treatment->fill($request->all())->save();
+        return redirect()->route('treatments.index')
+            ->with('info', 'Tratamiento Actualizado');
     }
 
     /**
@@ -80,6 +87,7 @@ class TreatmentController extends Controller
      */
     public function destroy(Treatment $treatment)
     {
-        //
+        $treatment->delete();
+        return back()->with('info', 'Tratamiento eliminado');
     }
 }

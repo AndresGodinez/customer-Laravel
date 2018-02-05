@@ -17,6 +17,7 @@ class CreateEstimationsTable extends Migration
             $table->increments('id');
 
             $table->integer('patient_id')->unsigned();
+            $table->tinyInteger('status')->unsigned();
             $table->float('subtotal',10,2);
             $table->float('balance',10,2);
             $table->float('total',10,2);

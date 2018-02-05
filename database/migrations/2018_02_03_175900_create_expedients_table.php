@@ -17,6 +17,7 @@ class CreateExpedientsTable extends Migration
             $table->increments('id');
             $table->integer('patient_id')->unsigned();
             $table->string('photo');
+            $table->string('comment')->nullable();
             $table->timestamps();
 
             // references
